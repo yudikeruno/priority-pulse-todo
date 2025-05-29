@@ -24,7 +24,7 @@ const TodoFilters: React.FC<TodoFiltersProps> = ({
   setSearchTerm,
 }) => {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-md">
+    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="space-y-2">
           <Label htmlFor="search">Search</Label>
@@ -80,7 +80,7 @@ const TodoFilters: React.FC<TodoFiltersProps> = ({
                 setSortBy('deadline');
                 setSearchTerm('');
               }}
-              className="px-3 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
+              className="px-3 py-2 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md transition-colors text-gray-800 dark:text-gray-200"
             >
               Reset
             </button>

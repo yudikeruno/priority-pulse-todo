@@ -4,6 +4,7 @@ import { Todo, SortBy, FilterBy } from '@/types/todo';
 import TodoForm from './TodoForm';
 import TodoItem from './TodoItem';
 import TodoFilters from './TodoFilters';
+import { DarkModeToggle } from './DarkModeToggle';
 import { Plus, CheckCircle, Clock, AlertCircle } from 'lucide-react';
 
 const TodoApp = () => {
@@ -87,50 +88,58 @@ const TodoApp = () => {
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-          Priority Pulse Todo
-        </h1>
-        <p className="text-gray-600">Manage your tasks with smart prioritization</p>
+        <div className="flex justify-between items-start mb-4">
+          <div className="flex-1" />
+          <div className="flex-1">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+              Priority Pulse Todo
+            </h1>
+            <p className="text-gray-600 dark:text-gray-300">Manage your tasks with smart prioritization</p>
+          </div>
+          <div className="flex-1 flex justify-end">
+            <DarkModeToggle />
+          </div>
+        </div>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white rounded-lg p-4 shadow-md border-l-4 border-blue-500">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md border-l-4 border-blue-500">
           <div className="flex items-center">
             <CheckCircle className="h-8 w-8 text-blue-500 mr-3" />
             <div>
-              <p className="text-sm text-gray-600">Total</p>
-              <p className="text-2xl font-bold text-gray-800">{stats.total}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Total</p>
+              <p className="text-2xl font-bold text-gray-800 dark:text-gray-100">{stats.total}</p>
             </div>
           </div>
         </div>
         
-        <div className="bg-white rounded-lg p-4 shadow-md border-l-4 border-yellow-500">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md border-l-4 border-yellow-500">
           <div className="flex items-center">
             <Clock className="h-8 w-8 text-yellow-500 mr-3" />
             <div>
-              <p className="text-sm text-gray-600">Pending</p>
-              <p className="text-2xl font-bold text-gray-800">{stats.pending}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Pending</p>
+              <p className="text-2xl font-bold text-gray-800 dark:text-gray-100">{stats.pending}</p>
             </div>
           </div>
         </div>
         
-        <div className="bg-white rounded-lg p-4 shadow-md border-l-4 border-orange-500">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md border-l-4 border-orange-500">
           <div className="flex items-center">
             <AlertCircle className="h-8 w-8 text-orange-500 mr-3" />
             <div>
-              <p className="text-sm text-gray-600">In Progress</p>
-              <p className="text-2xl font-bold text-gray-800">{stats.inProgress}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">In Progress</p>
+              <p className="text-2xl font-bold text-gray-800 dark:text-gray-100">{stats.inProgress}</p>
             </div>
           </div>
         </div>
         
-        <div className="bg-white rounded-lg p-4 shadow-md border-l-4 border-green-500">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md border-l-4 border-green-500">
           <div className="flex items-center">
             <CheckCircle className="h-8 w-8 text-green-500 mr-3" />
             <div>
-              <p className="text-sm text-gray-600">Completed</p>
-              <p className="text-2xl font-bold text-gray-800">{stats.completed}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Completed</p>
+              <p className="text-2xl font-bold text-gray-800 dark:text-gray-100">{stats.completed}</p>
             </div>
           </div>
         </div>
@@ -161,9 +170,9 @@ const TodoApp = () => {
       <div className="space-y-4">
         {filteredAndSortedTodos.length === 0 ? (
           <div className="text-center py-12">
-            <CheckCircle className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500 text-lg">No todos found</p>
-            <p className="text-gray-400">Add a new todo to get started!</p>
+            <CheckCircle className="h-16 w-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+            <p className="text-gray-500 dark:text-gray-400 text-lg">No todos found</p>
+            <p className="text-gray-400 dark:text-gray-500">Add a new todo to get started!</p>
           </div>
         ) : (
           filteredAndSortedTodos.map(todo => (
@@ -181,7 +190,7 @@ const TodoApp = () => {
       {/* Todo Form Modal */}
       {(isFormOpen || editingTodo) && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
             <TodoForm
               todo={editingTodo}
               onSubmit={editingTodo ? 
