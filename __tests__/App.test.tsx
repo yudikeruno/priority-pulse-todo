@@ -5,5 +5,5 @@ import App from '../src/App'; // ⬅️ pastikan path-nya benar
 
 test('renders app component', () => {
   render(<App />);
-  expect(screen.getByText(/priority pulse todo/i)).toBeInTheDocument();
+  expect(screen.getByText(/To Do List App/i)).toBeInTheDocument();
 });
